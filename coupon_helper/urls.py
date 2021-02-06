@@ -18,12 +18,14 @@ from django.urls import path, include
 from django.contrib.staticfiles.urls import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
-
-
+from django.conf.urls import url
+from django.views.generic import RedirectView
+from django.urls import reverse
 
 urlpatterns = [
     path('', include('handlers.urls')),
     path('admin/', admin.site.urls),
+    url(r'^favicon\.ico$',RedirectView.as_view(url='/static/images/favicon.ico')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
